@@ -1,0 +1,31 @@
+0001   0000             ; Rodolfo Ivan Villa Nueva
+0002   0000             
+0003   0000             .org  0000h
+0004   0000             ; cargamos  numerod hexadeecimales al  los registro B Y C
+0005   0000 06 5F        ld b, 5Fh
+0006   0002 0E 1A        ld c, 1Ah
+0007   0004             
+0008   0004             ; converrtimos el bit mas alto de B a bcd
+0009   0004 78           ld a,b
+0010   0005 CB 3F        srl a
+0011   0007             ; convertimos el bit mas alto de C a bcd
+0012   0007 51           ld d,c
+0013   0008 CB 3A        srl d
+0014   000A             ; convertimos el digito mas bajo de C a bcd
+0015   000A 59           ld e,c
+0016   000B E6 0F        AND  0fh
+0017   000D             ; almacenamos en registros DE
+0018   000D CB 22        sla d
+0019   000F 82           add a ,d
+0020   0010             
+0021   0010             ; convertimos el digito mas bajo de B a bcd
+0022   0010 48           ld c,b
+0023   0011 E6 0F         AND  0fh
+0024   0013              ;almacenaje en el Registro BC
+0025   0013 CB 20        sla b
+0026   0015 81           add a,c
+0027   0016             
+0028   0016             
+0029   0016             
+0030   0016             end
+Number of errors = 0
